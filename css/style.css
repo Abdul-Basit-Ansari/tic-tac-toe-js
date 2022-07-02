@@ -1,0 +1,46 @@
+.box {
+	border: 1px solid black;
+	border-radius: 5px;
+	display: flex;
+	width: 25rem;
+	height: 25rem;
+	margin: 2vh auto;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+}
+
+.box>.row {
+	border: 2px solid black;
+	border-collapse: collapse;
+	width: 8rem;
+	height: 8rem;
+	font-size: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.choose {
+	width: 70vw;
+	height: 20vh;
+	position: absolute;
+	background-color: cadetblue;
+	padding: 1% 5%;
+	border: 2px solid black;
+	border-radius: 10px;
+	text-align: center;
+	margin: 10% 10%;
+	/* display: none; */
+}
+
+.choose>.btn {
+	color: black;
+	padding: 1% 2%;
+	border: 2px solid black;
+	background-color: aquamarine;
+	border-radius: 5px;
+	font-size: 1rem;
+
+}
