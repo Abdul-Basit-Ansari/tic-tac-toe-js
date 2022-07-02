@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My test Web</title>
+</head>
+
+<body>
+	<style>
+		.box {
+			border: 1px solid black;
+			border-radius: 5px;
+			display: flex;
+			width: 25rem;
+			height: 25rem;
+			margin: 2vh auto;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+
+		}
+
+		.box>.row {
+			border: 2px solid black;
+			border-collapse: collapse;
+			width: 8rem;
+			height: 8rem;
+			font-size: 3rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.choose {
+			width: 70vw;
+			height: 20vh;
+			position: absolute;
+			background-color: cadetblue;
+			padding: 1% 5%;
+			border: 2px solid black;
+			border-radius: 10px;
+			text-align: center;
+			margin: 10% 10%;
+			/* display: none; */
+		}
+
+		.choose>.btn {
+			color: black;
+			padding: 1% 2%;
+			border: 2px solid black;
+			background-color: aquamarine;
+			border-radius: 5px;
+			font-size: 1rem;
+
+		}
+	</style>
+	<h1 style="margin:3% 0% ; text-align:center;">Tic Toc Game</h1>
+	<div class="box">
+		<div class="row" id="box1" onclick="tictoc(document.getElementById('box1'))"></div>
+		<div class="row" id="box2" onclick="tictoc(document.getElementById('box2'))"></div>
+		<div class="row" id="box3" onclick="tictoc(document.getElementById('box3'))"></div>
+		<div class="row" id="box4" onclick="tictoc(document.getElementById('box4'))"></div>
+		<div class="row" id="box5" onclick="tictoc(document.getElementById('box5'))"></div>
+		<div class="row" id="box6" onclick="tictoc(document.getElementById('box6'))"></div>
+		<div class="row" id="box7" onclick="tictoc(document.getElementById('box7'))"></div>
+		<div class="row" id="box8" onclick="tictoc(document.getElementById('box8'))"></div>
+		<div class="row" id="box9" onclick="tictoc(document.getElementById('box9'))"></div>
+	</div>
+	<div class="choose">
+		<h1>Choose Your Symbol</h1>
+		<button id="cross" onclick="symbol(document.getElementById('cross'))" class="btn">Cross(❌)</button>
+		<button id="circle" onclick="symbol(document.getElementById('circle'))" class="btn">Circle(⭕)</button>
+		<input type="text" id="res" value="" hidden>
+	</div>
+	<script>
+		function symbol(btnid) {
+
+			if (btnid.id === 'circle') {
+				let res = document.getElementById('res').value = 'circle'
+				let circlebtn = document.getElementById("circle")
+				circlebtn.style.backgroundColor = "rgb(49, 129, 102)"
+
+				let crossbtn = document.getElementById("cross")
+				crossbtn.style.backgroundColor = " aquamarine"
+				return 'circle'
+			}
+			else if (btnid.id === 'cross') {
+				let res = document.getElementById('res').value = 'cross'
+				let crossbtn = document.getElementById("cross")
+				crossbtn.style.backgroundColor = "rgb(49, 129, 102)"
+
+
+				let circlebtn = document.getElementById("circle")
+				circlebtn.style.backgroundColor = " aquamarine"
+
+				return 'cross'
+			}
+		}
+
+
+		function tictoc(boxid) {
+			let res = document.getElementById('res').value;
+			if (res === 'circle' && boxid.innerText === "") {
+				boxid.innerText = '⭕';
+			}
+			else if (res === 'cross' && boxid.innerText === "") {
+				boxid.innerText = '\u274C';
+			}
+			
+
+			let box1 = document.getElementById('box1').innerText
+			let box2 = document.getElementById('box2').innerText
+			let box3 = document.getElementById('box3').innerText
+			let box4 = document.getElementById('box4').innerText
+			let box5 = document.getElementById('box5').innerText
+			let box6 = document.getElementById('box6').innerText
+			let box7 = document.getElementById('box7').innerText
+			let box8 = document.getElementById('box8').innerText
+			let box9 = document.getElementById('box9').innerText
+			let cross = '\u274C';
+			let circle = '⭕';
+
+			if (box1 === circle && box2 === circle && box3 === circle || box4 === circle && box5 === circle && box6 === circle || box7 === circle && box8 === circle && box9 === circle || box1 === circle && box4 === circle && box7 === circle || box2 === circle && box5 === circle && box8 === circle || box3 === circle && box6 === circle && box9 === circle || box1 === circle && box5 === circle && box9 === circle || box3 === circle && box5 === circle && box7 === circle) {
+
+				let boxs = document.querySelectorAll(".row")
+				for (let box of boxs) {
+					box.innerHTML = ""
+				}
+				alert("circle win")
+
+			}
+			else if (box1 === cross && box2 === cross && box3 === cross || box4 === cross && box5 === cross && box6 === cross || box7 === cross && box8 === cross && box9 === cross || box1 === cross && box4 === cross && box7 === cross || box2 === cross && box5 === cross && box8 === cross || box3 === cross && box6 === cross && box9 === cross || box1 === cross && box5 === cross && box9 === cross || box3 === cross && box5 === cross && box7 === cross) {
+				let boxs = document.querySelectorAll(".row")
+				for (let box of boxs) {
+					box.innerHTML = ""
+				}
+				alert("cross win")
+				
+			}
+			if (box1 != "" && box2 != "" && box3 != "" && box4 != "" && box5 != "" && box6 != "" && box7 != "" && box8 != "" && box9 != "") {
+			
+				let boxs = document.querySelectorAll(".row")
+				for (let box of boxs) {
+					box.innerHTML = ""
+				}
+				alert("draw")
+			}
+
+		}
+
+
+// 			function sample(array) {
+// 				return array[Math.floor(Math.random() * array.length)];
+// 			}
+// 			function pcmove(boxid){
+// 				let res = document.getElementById('res').value;
+// 			if (res === 'circle') {
+// 				var pcSymbol  = '\u274C';
+// 			}
+// 			else if (res === 'cross') {
+// 				var pcSymbol = '⭕';
+// 			}
+			
+// 			let box1 = document.getElementById('box1')
+// 			let box2 = document.getElementById('box2')
+// 			let box3 = document.getElementById('box3')
+// 			let box4 = document.getElementById('box4')
+// 			let box5 = document.getElementById('box5')
+// 			let box6 = document.getElementById('box6')
+// 			let box7 = document.getElementById('box7')
+// 			let box8 = document.getElementById('box8')
+// 			let box9 = document.getElementById('box9')
+// 			pcbox = sample([box1, box2, box3, box4, box5, box6, box7, box8, box9])
+			
+// 			if (pcbox.innerHTML === "") {
+				
+// 				pcbox.innerHTML = pcSymbol;
+// 			}
+		
+// console.log (pcbox , pcSymbol)
+
+// 			}
+
+		
+
+
+	
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>
